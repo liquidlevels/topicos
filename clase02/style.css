@@ -1,0 +1,61 @@
+/* parametros por defecto */
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    /* equivale a 10px */
+    font-size: 62.5%;
+}
+
+body{
+    box-sizing: border-box;
+    background-color: #264653;
+    color: #eee;
+}
+/* estilo para el header que esta dentro del <body>, hereda parametros de body */
+header{
+    margin: 2rem;
+    margin-bottom: 10rem;
+    padding: 2rem;
+    border: 0.3rem solid white;
+    background-color: #e76f51;
+    font-size: 4rem;
+    text-align: center;
+    border-radius: 1.2rem;
+}
+
+/* aplica a todas las section */
+section{
+    /* flex es para dividir horizontal y verticalmente */
+    /* display: flex; */
+    font-size: 2rem;
+    padding: 2rem;
+    margin: 2rem;
+    border: 0.3rem solid #eee;
+    border-radius: 2rem;
+}
+
+h2{
+    text-align: center;
+}
+
+/* estilo para la primera_seccion */
+.primera_seccion{
+    background-color: #e9c46a;
+    
+}
+
+.primera_seccion ul{
+    color: #023047;
+}
+
+#favorite_items{
+    color:antiquewhite;
+}
+/* estilo para la segunda_seccion */
+.segunda_seccion{
+    background-color: #2a9d8f;
+}
