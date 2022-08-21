@@ -68,3 +68,53 @@ h4{
     font-size: 1.5rem;
     font-style: oblique;
 }
+
+.second{
+    background-color: #333;
+    display:flex;
+    border-radius: 2rem;
+    margin: 2rem;
+    padding: 2rem;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+.second img{
+    width: 30rem;
+    height: 30rem;  
+    border-radius: 1rem;
+    align-items: center;
+}
+
+.second__caja-1 img{
+    text-align: start;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 1rem;
+}
+
+.second__caja-2 img{
+    text-align: start;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 1rem;
+}
+
+.second__caja-3 img{
+    text-align: start;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 1rem;
+}
+
+.second__caja-4{
+    text-align: start;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 1rem;
+}
