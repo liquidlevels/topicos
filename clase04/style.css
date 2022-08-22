@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 2rem;
+    background-color: #333;
+}
+
+.main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 2rem;
+}
+
+.main__tittle{
+    font: 4rem;
+    background-color: blueviolet;
+    text-align: center;
+}
+
+.main__persona-data{
+    font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: yellow;
+
+}
+
+.main__persona-data input{
+    height: 2.5rem;
+    width: 20rem;
+    border-radius: 1.2rem;
+    border: none;
+    border-color: blueviolet;
+    margin: 2rem;
+    padding-left: 1.5rem;
+}
+
+.main__persona-data button{
+    border-radius: 1.5rem;
+    height: 2.5rem;
+    border: none;
+    border-color:blueviolet;
+    margin: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
