@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/vue@3" defer></script>
     <script src="app04.js" defer></script>
     <link rel="stylesheet" href="style.css">
-    <title>Vue Introduccion</title>
+    <title>Introduccion a Vue.js</title>
 </head>
 <body>
     <div class="main" id="app">
@@ -18,10 +18,9 @@
             <h1>Bienvenido a Vue.js</h1>
         </div>
         <div class="main__persona-data">
-            <h5>Nombre usuario</h5>
-            <input type="text" v-model="nombre">
-            <h5>Edad usuario</h5>
-            <input type="text" v-model="edad">
+            <h2>Inserta los datos</h2>
+            <input type="text" v-model="nombre" placeholder="Nombre del usuario">
+            <input type="text" v-model="edad" placeholder="Edad del usuario">
             <p>Nombre: {{nombre}}</p>
             <p>Edad: {{edad}}</p>
             <p>{{validarEdad}}</p>

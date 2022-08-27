@@ -1,0 +1,82 @@
+<!-- Clase del 25/08/22 
+    Introduccion a Vue.js 02-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="style.css"> 
+    <title>Calculo de IMC</title>
+</head>
+<body>
+    <div class="main" id="my-app">
+    </div>
+
+    <script>
+        const vw = Vue.createApp({
+            data(){
+                return {
+                    peso: 0,
+                    altura: 0,
+                    altura_cm: 0,
+                    imc: 0,
+                    cm: 100,
+                    title: 'Calculo del IMC',
+                    resultado: ''
+                }
+            },
+
+            computed:{
+                calcularIMC(){
+                    this.altura_cm = this.altura / this.cm;
+                    this.imc = this.peso / ( this.altura_cm * this.altura_cm )
+                     return this.imc
+
+                    //return this.peso / Math.pow(2, this.altura / 100)
+                },
+
+                evaluarIMC(){
+                    if(this.imc > 25){
+                        this.validacion = 'Sobrepeso'
+                    } else if(this.imc < 18.50){
+                        this.validacion = 'Delgado'
+                    } else if(this.imc > 18.50 || this.imc < 25){
+                        this.validacion = 'Normal'
+                    }
+
+                    return this.validacion
+                }
+            },
+
+            template: `
+
+            <div class="main">
+                <div class="main__title">
+                    <p>{{title}}</p>
+                </div>
+
+                <div class="main__form">
+                    <label for="">Peso: </label>
+                    <input type="text" v-model="peso" placeholder="peso en kg">
+                    
+                    <label for="">Altura: </label>
+                    <input type="text" v-model="altura" placeholder="altura en cm">
+                    <button>IMC</button>
+                </div> 
+                    
+                <div class="main__results">
+                    <h2>Tu imc es: {{(calcularIMC).toFixed(2)}}</h2>
+                    <h2>Validacion: {{evaluarIMC}}</h2>
+                </div>
+            </div>
+                
+            
+            `,
+
+        }).mount('#my-app');
+    </script>
+</body>
+</html>

@@ -25,6 +25,9 @@ body{
     font: 4rem;
     background-color: blueviolet;
     text-align: center;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    border-radius: 2rem;
 }
 
 .main__persona-data{
@@ -33,8 +36,12 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: yellow;
-
+    color: black;
+    background-color: blueviolet;
+    border-radius: 2rem;
+    margin-top: 2rem;
+    margin-right: 4rem;
+    margin-left: 4rem;
 }
 
 .main__persona-data input{
@@ -43,7 +50,7 @@ body{
     border-radius: 1.2rem;
     border: none;
     border-color: blueviolet;
-    margin: 2rem;
+    margin: 1rem;
     padding-left: 1.5rem;
 }
 
@@ -52,7 +59,22 @@ body{
     height: 2.5rem;
     border: none;
     border-color:blueviolet;
-    margin: 2rem;
+    margin: 1.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+}
+
+.main__persona-data label{
+    font-size: 2rem;
+}
+
+.main__persona-data p{
+    font-size: 2rem;
+    margin: 0.2rem;
+
+}
+
+.main__persona-data h2{
+    font-size: 2rem;
+    margin-top: 2rem;
 }
