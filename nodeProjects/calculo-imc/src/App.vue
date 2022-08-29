@@ -13,7 +13,7 @@
     </div>
 
     <div class="main__results">
-      <p>Tu IMC es: {{calcularIMC}}</p>
+      <p>Tu IMC es: {{(calcularIMC).toFixed(2)}}</p>
       <p>{{validarIMC}}</p>
     </div>
 
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+
   export default {
     data(){
       return {
@@ -28,7 +29,8 @@
         altura: '',
         altura_cm: 0,
         cm: 100,
-        imc: 0,
+        imc: '',
+        resultado: '',
         tittle: 'Calculo del IMC'
       }
     },
@@ -42,17 +44,68 @@
       },
 
       validarIMC(){
-        if( this.imc < 18.5 ){
-          return 'Delgado'
+        
+        if( this.imc < 16){
+          return 'Delgadez Severa'
+        }
+        else if( this.imc > 16 && this.imc < 17 ){
+          return 'Delgadez Moderada'
+        }
+        else if( this.imc > 17 && this.imc < 18.5 ){
+          return 'Delgadez Normal'
         }
         else if( this.imc > 18.5 && this.imc < 25 ){
           return 'Normal'
         }
-        else if( this.imc > 25 ){
+        else if( this.imc > 25 && this.imc < 30 ){
           return 'Sobrepeso'
         }
+        else if( this.imc > 30 && this.imc < 35 ){
+          return 'Obesidad Tipo I'
+        }
+        else if( this.imc > 35 && this.imc < 40 ){
+          return 'Obesidad Tipo II'
+        }
+        else if( this.imc > 40 ){
+          return 'Obesidad Tipo III'
+        }
 
-      }
+      },  
+
+      // newValidarIMC(){
+      //   while( this.imc != 0 ){
+
+      //     switch(this.imc){
+      //       case this.imc < 16:
+      //         this.resultado = 'Delgadez Severa'
+      //         break;
+      //       case this.imc > 16 && this.imc < 16.99:
+      //         this.resultado = 'Delgadez Moderada' 
+      //         break;
+      //       case this.imc > 17 && this.imc < 18.5:
+      //         this.resultado = 'Delgadez'
+      //         break;
+      //       case this.imc > 18.5 && this.imc < 25:
+      //         this.resultado = 'Normal'
+      //         break;
+      //       case this.imc > 25 && this.imc < 30:
+      //         this.resultado = 'Sobrepeso'
+      //         break;
+      //       case this.imc > 30 && this.imc < 35:
+      //         this.resultado = 'Obesidad Tipo I'
+      //         break;
+      //       case this.imc > 35 && this.imc < 40:
+      //         this.resultado = 'Obesidad Tipo II'
+      //         break;
+      //       case this.imc > 40:
+      //         this.resultado = 'Obesidad Tipo III'
+      //         break;
+      //       default: this.resultado = 'Dato no valido' 
+      //         break;
+      //     }
+
+      //   }
+      // }
     }
   }
 
