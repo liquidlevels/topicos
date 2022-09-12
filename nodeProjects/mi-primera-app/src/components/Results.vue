@@ -1,17 +1,18 @@
 <template>
-    <h1>{{texto}}</h1>
+    <h1>{{resultado}}</h1>
 </template>
 
 <script>
+import { toNumber } from '@vue/shared';
+
     export default {
         props: {
-            texto: String,
+            resultado: toNumber,
         }
     }
 </script>
 
 <style>
-
     h1{
         display:flex;
         flex:column;
