@@ -1,0 +1,42 @@
+.header{
+    padding: 2rem;
+    background-image: linear-gradient(rgb(0 0 0 / 0.8), rgb(0 0 0 / 0.7)), url(/img/asd.jpg);
+}
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+@media (min-width:768px){
+    .contenido{
+         flex-direction: row;
+    }
+}
+
+@media (min-width:768px){
+    .contenido__navegacion{
+        margin-top: 0;
+    }
+}
+
+.contenido__logo:hover{
+    cursor: pointer;
+}
+
+.contenido__navegacion{
+    display: flex;
+    gap: 3rem;
+}
+
+.contenido__navegacion a{
+    padding: 0.3rem;
+    transition-property:backgroud-color;
+    transition-duration: 3s;
+}
+
+.contenido__navegacion a:hover{
+    background-color: green;
+}

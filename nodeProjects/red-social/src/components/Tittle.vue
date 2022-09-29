@@ -23,5 +23,4 @@
         color: white;
         font-size: 3rem;
     }
-
 </style>

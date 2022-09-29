@@ -5,7 +5,7 @@
 <template>
         <div class="main__login" v-if="completeLogin">
             <!-- <label for="username">Username</label> -->
-            <input type="text" placeholder="username">
+            <input type="text" placeholder="username" v-model="nombre">
             <!-- <label for="password">Password</label> -->
             <input type="password" placeholder="password">
             <button @click="iniciarSesion">Login</button>
@@ -21,31 +21,35 @@
     export default {
         data(){
             return{
+                nombre: '',
                 sesionIniciada: false,
                 completeLogin: true,
             }
+        },
+
+        components:{
+            SesionIniciada,
         },
 
         methods:{
             iniciarSesion(){
                 this.sesionIniciada = !this.sesionIniciada
                 this.completeLogin = !this.completeLogin
+                
             }
         }
     }
 </script>
 
 <style scoped>
-
     .main__login{
-        width: 50rem;
         padding: 4rem;
-        background: #191919;
         border-radius: 2.4rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: #191919;
     }
 
     .main__login input{
@@ -73,12 +77,4 @@
         color: white;
     }
 
-    /* .main__login button:hover{
-        color: brown;
-        width: 20rem;
-        height: 3rem;
-        color: white;
-        background-color: blue;
-        font-size: 2rem;
-    } */
 </style>

@@ -1,6 +1,7 @@
 <script setup>
   import Tittle from './components/Tittle.vue'
   import Formulario from './components/Formulario.vue'
+  import SesionIniciada from './components/SesionIniciada.vue'
 </script>
 
 <template>
@@ -10,6 +11,7 @@
       <Tittle texto="ITE Connection"/>
       <Formulario />
     </div>
+
     <div class="main__onOff__button">
     <button @click="onOff">{{aparecer_desaparecer}}</button>
     </div>
@@ -28,7 +30,9 @@
     },
 
     components:{
-
+      Tittle,
+      Formulario,
+      SesionIniciada
     },
 
     methods:{
@@ -42,11 +46,11 @@
         }
       },
 
-      sesionIniciada(){
-        if (this.flag == false){
-          this.cambio = true
-        }
-      }
+      // sesionIniciada(){
+      //   if (this.flag == false){
+      //     this.cambio = true
+      //   }
+      // }
     }
 
   }
@@ -61,9 +65,6 @@
   } 
 
   body{
-    box-sizing: border-box;
-    /* background-color: #34495e; */
-    /* background-color: #606c38; */
     background-color:#3a5a40;
   }
   
@@ -72,7 +73,7 @@
     font-family:'Trebuchet MS';
   }
 
-  .main{
+  /* .main{
     width: 50rem;
     padding: 4rem;
     border-radius: 2.4rem;
@@ -82,6 +83,30 @@
     transform: translate(-50%,-50%);
     background: #191919;
     text-align: center;
+  } */
+
+  /* .main{
+    padding: 2rem;
+    margin: 50vh 50vh;
+    border-radius: 1.2rem;
+    background-color: #191919;
+    display:flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+  } */
+
+  .main{
+      margin-top: 20rem;
+      padding: 4rem;
+      margin-left: 50vh;
+      margin-right: 50vh;
+      border-radius: 2.4rem;
+      background-color: #191919;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
   }
 
   .main__onOff__button button{
