@@ -1,0 +1,36 @@
+.post{
+    display: inline-flex;
+    flex-direction: column;
+    width: 30%;
+    height: 50rem;
+    background-color: #191919;
+    margin:2rem;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.post__titulo{
+    background-color:#202020;
+    border-radius: .5rem;
+    text-align: center;
+    font-size: 1.6rem;
+    padding: .5rem;
+    color:blueviolet;
+}
+
+.post__descripcion{
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+@media screen and (max-width: 1200px) {
+    .post {
+      width: 40%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .post {
+      width: 90%;
+    }
+}
