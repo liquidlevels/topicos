@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tienda",
+  "info": {
+    "name": "Tienda",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "precio": {
+      "type": "float"
+    },
+    "cantidad": {
+      "type": "integer"
+    },
+    "imagen": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}
