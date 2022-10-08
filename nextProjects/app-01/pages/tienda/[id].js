@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
-export const getStaticPaths = async () => {
-            {productos.precio}  
+export const getStaticPaths = async () => {  
             const res = await fetch('http://localhost:1337/tiendas')
     const data = await res.json()
     const paths = data.map(path =>{
@@ -25,20 +24,20 @@ export const getStaticProps = async  (context) => {
 
     return {
         props:{
-            productos: data
+            post: data
         }
     }
 }
 
-const Details = ({productos}) => {
+const Details = ({post}) => {
     return (
         <div>
-            {productos.titulo}
-            {productos.descripcion}
-            {productos.precio}
-            {productos.cantidad}  
+            {post.titulo}
+            {post.descripcion}
+            {post.precio}
+            {post.cantidad}  
             <Image layout='responsive' width={800} height={800} priority
-            src={`http://localhost:1337${productos.imagen.url}`}/>
+            src={`http://localhost:1337${post.imagen.url}`}/>
             
         </div>
         
