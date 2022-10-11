@@ -34,7 +34,7 @@ const EntradaTienda = ( {entradaTienda} ) => {
 
         <Link href={`/tienda/${id}`}>
             <a className={styles.producto__enlace}>
-                Ver entrada completa
+                Comprar
             </a>
         </Link>
     </div>

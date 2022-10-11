@@ -32,6 +32,15 @@
     overflow: hidden;
 }
 
+.producto__enlace{
+    background-color: #202020;
+    border-radius: .5rem;
+    font-size: 1.6rem;
+    padding: .5rem;
+    text-align: center;
+    color:blueviolet;
+}
+
 @media screen and (max-width: 1200px) {
     .post {
       width: 40%;
