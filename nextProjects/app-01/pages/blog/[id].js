@@ -1,5 +1,4 @@
 import Image from 'next/image'
-// import styles from '../styles/Post.module.css'
 
 export const getStaticPaths = async () => {
     const res = await fetch('http://localhost:1337/blogs')

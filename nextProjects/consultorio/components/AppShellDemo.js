@@ -10,6 +10,7 @@ import {
   MediaQuery,
   Burger,
   useMantineTheme,
+  Group,
 } from '@mantine/core';
 import Image from 'next/image';
 
@@ -32,6 +33,7 @@ export default function AppShellDemo({children}) {
             <li><Link href='/consultar'>Consultar</Link></li>
             <li><Link href='/buscadorDeAlimentos'>Buscador de Alimentos</Link></li>
             <li><Link href='/calculos'>Calculos</Link></li>
+            <li><Link href='/energy'>Energy</Link></li>
           </ul>
         </Navbar>
       }
@@ -44,7 +46,15 @@ export default function AppShellDemo({children}) {
       // }
       footer={
         <Footer height={60} p="md">
-          Application footer
+          {/* <Link href='/consultar'>Consultar</Link> */}
+
+          <Group position='right' mt='md'>
+            <Link href='/consultar'>Consultar</Link>
+            <Link href='/buscadorDeAlimentos'>Buscar Alimentos</Link>
+            <Link href='/calculos'>Calculos</Link>
+            <Link href='/energy'>Energy</Link>
+          </Group>
+          Aqui es el footer
         </Footer>
       }
       header={
@@ -65,7 +75,7 @@ export default function AppShellDemo({children}) {
                     <Image width={50} height={50} src='/img/juanpunch.jpg'/>
                     </a>
                 </Link>
-            <Text>Application header</Text>
+            <Text align='right'>Consultorio</Text>
           </div>
         </Header>
       }

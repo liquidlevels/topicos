@@ -5,7 +5,9 @@ import AppShellDemo from '../components/AppShellDemo';
 const Home = () => {
   return (
     <div>
-      <AppShellDemo></AppShellDemo>
+      <AppShellDemo>
+        Inicio
+      </AppShellDemo>
     </div>
   )
 }
