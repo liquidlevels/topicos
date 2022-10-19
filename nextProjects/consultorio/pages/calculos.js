@@ -64,6 +64,11 @@ const calculos = () => {
 
   }
 
+
+  const validacion = () => {
+
+  }
+
   const llamarDoble = () => {
     setResultado(calcularIMC)
     setIMC(validarIMC)
@@ -83,7 +88,7 @@ const calculos = () => {
           />
           
           <TextInput
-            label="Talla"
+            label="Altura"
             placeholder='altura en m'
             {...form.getInputProps('talla')}
           />

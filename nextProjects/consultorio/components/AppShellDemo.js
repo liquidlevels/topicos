@@ -32,8 +32,10 @@ export default function AppShellDemo({children}) {
           <ul>
             <li><Link href='/consultar'>Consultar</Link></li>
             <li><Link href='/buscadorDeAlimentos'>Buscador de Alimentos</Link></li>
-            <li><Link href='/calculos'>Calculos</Link></li>
-            <li><Link href='/energy'>Energy</Link></li>
+            <li><Link href='/calculos'>IMC</Link></li>
+            <li><Link href='/energyTest'>Test</Link></li>
+            <li><Link href='/cuadroDietosintetico'>Dietosintetico</Link></li>
+            {/* <li><Link href='/energy'>Energy</Link></li> */}
           </ul>
         </Navbar>
       }
@@ -51,8 +53,10 @@ export default function AppShellDemo({children}) {
           <Group position='right' mt='md'>
             <Link href='/consultar'>Consultar</Link>
             <Link href='/buscadorDeAlimentos'>Buscar Alimentos</Link>
-            <Link href='/calculos'>Calculos</Link>
-            <Link href='/energy'>Energy</Link>
+            <Link href='/calculos'>IMC</Link>
+            <Link href='/energyTest'>Test</Link>
+            {/* <Link href='/energy'>Energy</Link> */}
+            <Link href='/cuadroDietosintetico'>Dietosintetico</Link>
           </Group>
           Aqui es el footer
         </Footer>
@@ -74,8 +78,9 @@ export default function AppShellDemo({children}) {
                     <a>
                     <Image width={50} height={50} src='/img/juanpunch.jpg'/>
                     </a>
-                </Link>
-            <Text align='right'>Consultorio</Text>
+            </Link>
+             
+            <Text size='md'>Consultorio</Text>
           </div>
         </Header>
       }

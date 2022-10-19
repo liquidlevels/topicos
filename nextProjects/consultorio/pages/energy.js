@@ -16,28 +16,35 @@ const energy = () => {
       seleccionFactorDeActividad: '',
       factorActividad: '',
       resultadoFormula: '',
+      get: '',
     }
   })
 
+  // let sexo = form.getInputProps('sexo')
+  let edad = form.getInputProps('edad')
+  let peso = form.getInputProps('peso')
+  let altura = form.getInputProps('altura')
+
   const [factorActividad, setFactorActividad] = useState('')
   const [resultadoFormula, setResultadoFormula] = useState('')
+  const [get, setGET] = useState('') 
 
   const calculoFactorActividad = () => {
     
-    switch( form.getInputProps('seleccionFactorDeActividad').value ){
-      case 'sedentario':
+    switch( form.getInputProps('seleccionFactorDeActividad') ){
+      case '0':
         factorActividad = 1.2
         break
-      case 'ligero':
+      case '1':
         factorActividad = 1.3 
         break
-      case 'moderado':
+      case '2':
         factorActividad = 1.5 
         break
-      case 'activo':
+      case '3':
         factorActividad = 1.7
         break
-      case 'vigoroso':
+      case '4':
         factorActividad = 1.9
         break
     }
@@ -49,57 +56,57 @@ const energy = () => {
 
   const calculoFormulas = () => {
 
-    if( form.getInputProps('sexo').value === 'femenino' ){
-      switch( form.getInputProps('formula').value ){
-        case 'harris-benedict':
-          resultadoFormula = 655.1 + ( 9.56 * form.getInputProps('peso').value ) + ( 1.85 * form.getInputProps('altura').value ) - ( 4.68 * form.getInputProps('edad').value )
+    if( form.getInputProps('sexo') === 'femenino' ){
+      switch( form.getInputProps('formula') ){
+        case '0':
+          resultadoFormula = 655.1 + ( 9.56 * peso ) + ( 1.85 * altura ) - ( 4.68 * edad )
           break
-        case 'oms':
-          resultadoFormula = ( 8.7 * form.getInputProps('peso').value ) - ( 25 * form.getInputProps('altura').value ) + 865
+        case '1':
+          resultadoFormula = ( 8.7 * peso ) - ( 25 * altura ) + 865
           break
-        case 'owen':
-          resultadoFormula = 795 + ( 7.18 * form.getInputProps('peso').value )
+        case '2':
+          resultadoFormula = 795 + ( 7.18 * peso )
           break
-        case 'valencia':
-          if( form.getInputProps('edad').value > 18 && form.getInputProps('edad').value < 29 ){
-            resultadoFormula = ( 11.02 * form.getInputProps('peso').value ) + 679
+        case '3':
+          if( edad > 18 && edad < 29 ){
+            resultadoFormula = ( 11.02 * peso ) + 679
           }
-          else if( form.getInputProps('edad').value > 30 && form.getInputProps('edad').value < 59 ){
-            resultadoFormula = ( 10.92 * form.getInputProps('peso').value ) + 677
+          else if( edad > 30 && edad < 59 ){
+            resultadoFormula = ( 10.92 * peso ) + 677
           }
-          else if( form.getInputProps('edad').value > 60 ){
-            resultadoFormula = ( 10.98 * form.getInputProps('peso').value ) + 520
+          else if( edad > 60 ){
+            resultadoFormula = ( 10.98 * peso ) + 520
           }
           break
-        case 'mifflin':
-          resultadoFormula = ( 10 * form.getInputProps('peso') ) + ( 6.25 * form.getInputProps('altura') ) - ( 5 * form.getInputProps('edad')) - 161
+        case '4':
+          resultadoFormula = ( 10 * peso ) + ( 6.25 * altura ) - ( 5 * edad ) - 161
           break
       }
     }
-    else if ( form.getInputProps('sexo').value === 'masculino' ){
+    else if ( form.getInputProps('sexo') === 'masculino' ){
       switch( form.getInputProps('formula') ){
-        case 'harris-benedict':
-          resultadoFormula = 66.5 + ( 13.75 * form.getInputProps('peso').value ) + ( 5 * form.getInputProps('altura').value ) - ( 6.78 * form.getInputProps('edad').value )
+        case '0':
+          resultadoFormula = 66.5 + ( 13.75 * peso ) + ( 5 * altura ) - ( 6.78 * edad )
           break
-        case 'oms':
-          resultadoFormula = ( 11.3 * form.getInputProps('peso').value ) - ( 16 * form.getInputProps('altura').value ) + 901
+        case '1':
+          resultadoFormula = (( 11.3 * peso ) - ( 16 * altura ) + 901)
           break
-        case 'owen':
-          resultadoFormula = 879 + ( 10.2 * form.getInputProps('peso').value )
+        case '2':
+          resultadoFormula = (879 + ( 10.2 * peso ) )
           break
-        case 'valencia':
-          if( form.getInputProps('edad').value > 18 && form.getInputProps('edad').value < 29 ){
-            resultadoFormula = ( 13.37 * form.getInputProps('peso').value ) + 747
+        case '3':
+          if( edad > 18 && edad < 29 ){
+            resultadoFormula = ( 13.37 * peso ) + 747
           }
-          else if( form.getInputProps('edad').value > 30 && form.getInputProps('edad').value < 59 ){
-            resultadoFormula = ( 13.08 * form.getInputProps('peso').value ) + 693
+          else if( edad > 30 && edad < 59 ){
+            resultadoFormula = ( 13.08 * peso ) + 693
           }
-          else if( form.getInputProps('edad').value > 60 ){
-            resultadoFormula = ( 14.21 * form.getInputProps('peso').value ) + 429
+          else if( edad > 60 ){
+            resultadoFormula = ( 14.21 * peso ) + 429
           }
           break
-        case 'mifflin':
-          resultadoFormula = ( ( 10 * form.getInputProps('peso') ) + ( 6.25 * form.getInputProps('altura') ) - ( 5 * form.getInputProps('edad')) + 5 )
+        case '4':
+          resultadoFormula = ( ( 10 * edad ) + ( 6.25 * altura ) - ( 5 * edad ) + 5 )
           break
       }
     }
@@ -108,9 +115,17 @@ const energy = () => {
     return resultadoFormula //resultadoFormula = Gasto Energetico Basal
   }
 
+  const calculoGET = () => {
+    get = resultadoFormula * factorActividad
+
+    return get
+  }
+
+
   const llamaTodoPapi = () => {
-    setResultadoFormula(calculoFormulas)
     setFactorActividad(calculoFactorActividad)
+    setResultadoFormula(calculoFormulas)
+    setGET(calculoGET)
   }
 
   return (
@@ -151,11 +166,11 @@ const energy = () => {
               label='Factor de Actividad'
               placeholder='Selecciona uno'
               data={[
-                {value: 'sedentario', label: 'Sedentario'},
-                {value: 'ligero', label: 'Ligero'},
-                {value: 'moderado', label: 'Moderado'},
-                {value: 'activo', label: 'Activo'},
-                {value: 'vigoroso', label: 'Vigoroso'}
+                {value: '0', label: 'Sedentario'},
+                {value: '1', label: 'Ligero'},
+                {value: '2', label: 'Moderado'},
+                {value: '3', label: 'Activo'},
+                {value: '4', label: 'Vigoroso'}
               ]}
               {...form.getInputProps('seleccionFactorDeActividad')}
             />
@@ -164,11 +179,11 @@ const energy = () => {
               label='Formulas disponibles'
               placeholder='Selecciona una'
               data={[
-                {value: 'harris-benedict', label: 'Harris - Benedict'},
-                {value: 'oms', label: 'OMS'},
-                {value: 'owen', label: 'Owen'},
-                {value: 'valencia', label: 'Valencia'},
-                {value: 'mifflin', label: 'Mifflin St - Jeor'}
+                {value: '0', label: 'Harris - Benedict'},
+                {value: '1', label: 'OMS'},
+                {value: '2', label: 'Owen'},
+                {value: '3', label: 'Valencia'},
+                {value: '4', label: 'Mifflin St - Jeor'}
               ]}
               {...form.getInputProps('formula')}
             />
@@ -180,7 +195,8 @@ const energy = () => {
             </Group>
 
             <Text size='md'>Gasto Energetico Basal: {resultadoFormula}</Text>
-            <Text size='md'>Factor de Actividad: {factorActividad}</Text>
+            {/* <Text size='md'>Factor de Actividad: {factorActividad}</Text> */}
+            <Text size='md'>Gasto Energetico Total: {get}</Text>
         </form>
       </Box>
     </AppShellDemo>
