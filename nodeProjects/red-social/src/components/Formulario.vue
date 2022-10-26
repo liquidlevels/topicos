@@ -1,8 +1,8 @@
 <script setup>
     import SesionIniciada from './SesionIniciada.vue'
 </script>
-
 <template>
+
         <div class="main__login" v-if="completeLogin">
             <!-- <label for="username">Username</label> -->
             <input type="text" placeholder="username" v-model="nombre">

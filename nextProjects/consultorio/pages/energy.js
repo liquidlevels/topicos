@@ -1,206 +1,274 @@
-import React, {useState} from 'react'
-import  {useForm}  from '@mantine/form';
-import { Text, Title } from '@mantine/core';
-import { TextInput, Button, Group, Box } from '@mantine/core';
-import { Select } from '@mantine/core';
+import { Box, Button, Group, Radio, Select, Text, TextInput, Title } from '@mantine/core'
+import { useForm } from '@mantine/form'
+import  React, {Children, useState} from 'react'
 import AppShellDemo from '../components/AppShellDemo'
+import CuadroDietosintetico from '../components/CuadroDietosintetico'
 
-const energy = () => {
+const energyTest = () => {
+  
+    const form = useForm ({
+        initialValues:{
+            sexo: '',
+            edad: '',
+            masa: '',
+            altura: '',
+            gastoEnergeticoTotal: '',
+            gastoEnergeticoBasal: '',
+            seleccionFormula: '',
+            seleccionFactorActividad: '',
+            formulasGET: '',
+            formulasGEB: ''
+        }
+    })
 
-  const form = useForm({
-    initialValues: {
-      sexo: '',
-      edad: '',
-      peso: '',
-      altura: '',
-      seleccionFactorDeActividad: '',
-      factorActividad: '',
-      resultadoFormula: '',
-      get: '',
+    const [gastoEnergeticoTotal, setGastoEnergeticoTotal] = useState('')
+    const [gastoEnergeticoBasal, setGastoEnergeticoBasal] = useState('')
+
+    let edad = form.getInputProps('edad').value
+    let masa = form.getInputProps('masa').value
+    let altura = form.getInputProps('altura').value
+
+    const GET = () => {
+
+        let formulasGET = {
+            0: 1.2 , //sedentario
+            1: 1.3,  //ligero
+            2: 1.5,  //moderado
+            3: 1.7,  //activo
+            4: 1.9  //vigoroso
+        } 
+        
+        return gastoEnergeticoTotal = gastoEnergeticoBasal * formulasGET[form.getInputProps('seleccionFactorActividad').value]
+
+                //Esta es la primer version del calculo de GET
+
+        // switch( form.getInputProps('seleccionFactorActividad').value ){
+        //     case '0':
+        //         gastoEnergeticoTotal = 1.2 * gastoEnergeticoBasal
+        //         break
+        //     case '1':
+        //         gastoEnergeticoTotal = 1.3 * gastoEnergeticoBasal
+        //         break
+        //     case '2':
+        //         gastoEnergeticoTotal = 1.5 * gastoEnergeticoBasal
+        //         break
+        //     case '3':
+        //         gastoEnergeticoTotal = 1.7 * gastoEnergeticoBasal
+        //         break
+        //     case '4':
+        //         gastoEnergeticoTotal = 1.9 * gastoEnergeticoBasal
+        //         break
+        // }
+
+        // console.log(gastoEnergeticoTotal)
+
+        // return gastoEnergeticoTotal
     }
-  })
 
-  // let sexo = form.getInputProps('sexo')
-  let edad = form.getInputProps('edad')
-  let peso = form.getInputProps('peso')
-  let altura = form.getInputProps('altura')
+    const GEB = () => {
 
-  const [factorActividad, setFactorActividad] = useState('')
-  const [resultadoFormula, setResultadoFormula] = useState('')
-  const [get, setGET] = useState('') 
+        let formulasGEB = {
+            0:{
+                0: gastoEnergeticoBasal = ( 655.1 + ( 9.56 * masa ) + ( 1.86 * altura ) - ( 4.68 * edad ) ),
+                1: gastoEnergeticoBasal = ( ( 8.7 * masa ) - ( 25 * (altura / 100) ) ) + 865,
+                2: gastoEnergeticoBasal = 795 + ( 7.18 * masa ),
+                3: {
+                    0: gastoEnergeticoBasal = 679 + ( 11.02 * masa ),   //edad > 18 && edad < 29
+                    1: gastoEnergeticoBasal = 677 + ( 10.92 * masa ),   //edad > 30 && edad < 59
+                    2: gastoEnergeticoBasal = 520 + ( 10.98 * masa )    //edad > 60
+                },
+                4: gastoEnergeticoBasal = ( ( 10 * masa ) + ( 6.25 * altura ) - ( 5 * edad ) - 161 )
+            },
+            1: {
+                0: gastoEnergeticoBasal = ( 66.5 + ( 13.75 * masa ) + ( 5 * altura ) - ( 6.78 * edad ) ),
+                1: gastoEnergeticoBasal = ( ( 13.3 * masa ) + ( 16 * (altura / 100) ) + 901 ),
+                2: gastoEnergeticoBasal = 795 + ( 7.18 * masa ),
+                3: {
+                    0: gastoEnergeticoBasal = 747 + ( 13.37 * masa ),   //edad > 18 && edad < 29
+                    1: gastoEnergeticoBasal = 693 + ( 13.08 * masa ),   //edad > 30 && edad < 59
+                    2: gastoEnergeticoBasal = 429 + ( 14.21 * masa )    //edad > 60
+                },
+                4: gastoEnergeticoBasal = ( ( 10 * masa ) + ( 6.25 * altura ) - ( 5 * edad ) + 5 )
+            }
+        }
 
-  const calculoFactorActividad = () => {
-    
-    switch( form.getInputProps('seleccionFactorDeActividad') ){
-      case '0':
-        factorActividad = 1.2
-        break
-      case '1':
-        factorActividad = 1.3 
-        break
-      case '2':
-        factorActividad = 1.5 
-        break
-      case '3':
-        factorActividad = 1.7
-        break
-      case '4':
-        factorActividad = 1.9
-        break
+        if( form.getInputProps('sexo').value === 0 ){
+            switch( form.getInputProps('seleccionFormula').value ){
+                case '0':
+                    formulasGEB[0[0]]
+                    break
+                case '1':
+                    formulasGEB[0[1]]
+                    break
+                case '2':
+                    formulasGEB[0[2]]
+                    break
+                case '3':
+                    formulasGEB[0[3]]
+                    break
+                case '4':
+                    formulasGEB[0[4]]
+                    break
+            }
+        }
+        else {
+            switch( form.getInputProps('seleccionFormula').value  ){
+                case '0':
+                    formulasGEB[1[0]]
+                    break
+                case '1':
+                    formulasGEB[1[1]]
+                    break
+                case '2':
+                    formulasGEB[1[2]]
+                    break
+                case '3':
+                    formulasGEB[1[3]]
+                    break
+                case '4':
+                    formulasGEB[1[4]]
+                    break
+            }
+        }
+
+        setGastoEnergeticoTotal(GET)
+
+        return gastoEnergeticoBasal
+
+                //Esta es la primer version del calculo de GEB
+
+        // if( form.getInputProps('sexo').value === '0' ){
+        //     switch( form.getInputProps('seleccionFormula').value ){
+        //         case '0':
+        //             gastoEnergeticoBasal = ( 655.1 + ( 9.56 * masa ) + ( 1.86 * altura ) - ( 4.68 * edad ) )
+        //             break
+        //         case '1':
+        //             gastoEnergeticoBasal = ( ( 8.7 * masa ) - ( 25 * (altura /100) ) ) + 865  
+        //             break
+        //         case '2': 
+        //             gastoEnergeticoBasal = 795 + ( 7.18 * masa )
+        //             break
+        //         case '3': 
+        //             if( edad > 18 && edad < 29 ){
+        //                 gastoEnergeticoBasal = 679 + ( 11.02 * masa )
+        //             }   
+        //             else if ( edad > 30 && edad < 59){
+        //                 gastoEnergeticoBasal = 677 + ( 10.92 * masa )
+        //             }
+        //             else {
+        //                 gastoEnergeticoBasal = 520 + ( 10.98 * masa )
+        //             }
+        //             break
+        //         case '4': 
+        //             gastoEnergeticoBasal = ( ( 10 * masa ) + ( 6.25 * altura ) - ( 5 * edad ) - 161 )
+        //             break
+        //     }
+        // }
+        // else{
+        //     switch( form.getInputProps('seleccionFormula').value ){
+        //         case '0':
+        //             gastoEnergeticoBasal = ( 66.5 + ( 13.75 * masa ) + ( 5 * altura ) - ( 6.78 * edad ) )
+        //             break
+        //         case '1':
+        //             gastoEnergeticoBasal = ( ( 13.3 * masa ) + ( 16 * (altura /100) ) + 901 )  
+        //             break
+        //         case '2': 
+        //             gastoEnergeticoBasal = 879 + ( 10.2 * masa )
+        //             break
+        //         case '3': 
+        //             if( edad > 18 && edad < 29 ){
+        //                 gastoEnergeticoBasal = 747 + ( 13.37 * masa )
+        //             }   
+        //             else if ( edad > 30 && edad < 59){
+        //                 gastoEnergeticoBasal = 693 + ( 13.08 * masa )
+        //             }
+        //             else {
+        //                 gastoEnergeticoBasal = 429 + ( 14.21 * masa )
+        //             }
+        //             break
+        //         case '4': 
+        //             gastoEnergeticoBasal = ( ( 10 * masa ) + ( 6.25 * altura ) - ( 5 * edad ) + 5 )
+        //             break
+        //     }
+        // }
+
+        console.log(gastoEnergeticoBasal)
+
+        setGastoEnergeticoTotal(GET)
+
+        return gastoEnergeticoBasal
     }
 
-    console.log(factorActividad)
-
-    return factorActividad
-  }
-
-  const calculoFormulas = () => {
-
-    if( form.getInputProps('sexo') === 'femenino' ){
-      switch( form.getInputProps('formula') ){
-        case '0':
-          resultadoFormula = 655.1 + ( 9.56 * peso ) + ( 1.85 * altura ) - ( 4.68 * edad )
-          break
-        case '1':
-          resultadoFormula = ( 8.7 * peso ) - ( 25 * altura ) + 865
-          break
-        case '2':
-          resultadoFormula = 795 + ( 7.18 * peso )
-          break
-        case '3':
-          if( edad > 18 && edad < 29 ){
-            resultadoFormula = ( 11.02 * peso ) + 679
-          }
-          else if( edad > 30 && edad < 59 ){
-            resultadoFormula = ( 10.92 * peso ) + 677
-          }
-          else if( edad > 60 ){
-            resultadoFormula = ( 10.98 * peso ) + 520
-          }
-          break
-        case '4':
-          resultadoFormula = ( 10 * peso ) + ( 6.25 * altura ) - ( 5 * edad ) - 161
-          break
-      }
+    const llamarTodoPapi = () => {
+        setGastoEnergeticoBasal(GEB)
     }
-    else if ( form.getInputProps('sexo') === 'masculino' ){
-      switch( form.getInputProps('formula') ){
-        case '0':
-          resultadoFormula = 66.5 + ( 13.75 * peso ) + ( 5 * altura ) - ( 6.78 * edad )
-          break
-        case '1':
-          resultadoFormula = (( 11.3 * peso ) - ( 16 * altura ) + 901)
-          break
-        case '2':
-          resultadoFormula = (879 + ( 10.2 * peso ) )
-          break
-        case '3':
-          if( edad > 18 && edad < 29 ){
-            resultadoFormula = ( 13.37 * peso ) + 747
-          }
-          else if( edad > 30 && edad < 59 ){
-            resultadoFormula = ( 13.08 * peso ) + 693
-          }
-          else if( edad > 60 ){
-            resultadoFormula = ( 14.21 * peso ) + 429
-          }
-          break
-        case '4':
-          resultadoFormula = ( ( 10 * edad ) + ( 6.25 * altura ) - ( 5 * edad ) + 5 )
-          break
-      }
-    }
-    console.log(resultadoFormula)
-
-    return resultadoFormula //resultadoFormula = Gasto Energetico Basal
-  }
-
-  const calculoGET = () => {
-    get = resultadoFormula * factorActividad
-
-    return get
-  }
-
-
-  const llamaTodoPapi = () => {
-    setFactorActividad(calculoFactorActividad)
-    setResultadoFormula(calculoFormulas)
-    setGET(calculoGET)
-  }
 
   return (
-    <AppShellDemo>
-      <Box sx={{ maxWidth: 500 }} mx='auto'>
-        <form>
-          <Title align='center'>CALCULO DIETETICO</Title>
-
-            <Select
-              label="Selecciona tu sexo"
-              placeholder='Selecciona uno'    
-              data={[
-                {value: 'femenino', label: 'Femenino'},
-                {value: 'masculino', label: 'Masculino'}
-              ]}
-              {...form.getInputProps('sexo')}
-            />
-
-            <TextInput
-              label= 'Edad'
-              placeholder='edad en años'
-              {...form.getInputProps('edad')}
-            />
-
-            <TextInput
-              label= 'Peso'
-              placeholder='peso en kg'
-              {...form.getInputProps('peso')}
-            />
-
-            <TextInput
-              label= 'Altura'
-              placeholder='altura en cm'
-              {...form.getInputProps('altura')}
-            />
-
-            <Select
-              label='Factor de Actividad'
-              placeholder='Selecciona uno'
-              data={[
-                {value: '0', label: 'Sedentario'},
-                {value: '1', label: 'Ligero'},
-                {value: '2', label: 'Moderado'},
-                {value: '3', label: 'Activo'},
-                {value: '4', label: 'Vigoroso'}
-              ]}
-              {...form.getInputProps('seleccionFactorDeActividad')}
-            />
-
-            <Select
-              label='Formulas disponibles'
-              placeholder='Selecciona una'
-              data={[
-                {value: '0', label: 'Harris - Benedict'},
-                {value: '1', label: 'OMS'},
-                {value: '2', label: 'Owen'},
-                {value: '3', label: 'Valencia'},
-                {value: '4', label: 'Mifflin St - Jeor'}
-              ]}
-              {...form.getInputProps('formula')}
-            />
-
-            <Group position='right' mt='md'>
-              <Button color='dark' onClick={ () => llamaTodoPapi() }>
-                Resultado
-              </Button>
-            </Group>
-
-            <Text size='md'>Gasto Energetico Basal: {resultadoFormula}</Text>
-            {/* <Text size='md'>Factor de Actividad: {factorActividad}</Text> */}
-            <Text size='md'>Gasto Energetico Total: {get}</Text>
-        </form>
-      </Box>
-    </AppShellDemo>
+    <CuadroDietosintetico>
+        <Box sx={{ maxWidth: 500 }} mx='auto'>
+            <form>
+                <Title order={1} align='center'>Calculo Dietetico</Title>
+                <Radio.Group
+                    mt='sm'
+                    label='Sexo'
+                    {...form.getInputProps('sexo')}
+                >
+                    <Radio value='0' label='Femenino' />
+                    <Radio value='1' label='Masculino' />
+                </Radio.Group>
+                <TextInput
+                    mt='sm'
+                    label='Edad'
+                    placeholder='edad en años'
+                    {...form.getInputProps('edad')}
+                />
+                <TextInput
+                    mt='sm'
+                    label='Masa'
+                    placeholder='masa en kg'
+                    {...form.getInputProps('masa')}
+                />
+                <TextInput
+                    mt='sm'
+                    label='Altura'
+                    placeholder='altura en cm'
+                    {...form.getInputProps('altura')}
+                />
+                <Select
+                    mt='sm'
+                    label='Factor de Actividad'
+                    placeholder='Selecciona uno'
+                    data={[
+                        {value: '0', label: 'Sedentario'},
+                        {value: '1', label: 'Ligero'},
+                        {value: '2', label: 'Moderado'},
+                        {value: '3', label: 'Activo'},
+                        {value: '4', label: 'Vigoroso'}
+                    ]}
+                    {...form.getInputProps('seleccionFactorActividad')}
+                />
+                <Select
+                    mt='sm'
+                    label='Formulas'
+                    placeholder='Selecciona una'
+                    data={[
+                        {value: '0', label: 'Harris - Benedict'},
+                        {value: '1', label: 'OMS'},
+                        {value: '2', label: 'Owen'},
+                        {value: '3', label: 'Valencia'},
+                        {value: '4', label: 'Mifflin St-Jeor'}
+                    ]}
+                    {...form.getInputProps('seleccionFormula')}
+                />
+                <Group position='right' mt='md'>
+                    <Button color='dark' onClick={ () => llamarTodoPapi() }>Calcular</Button>
+                </Group>    
+                <Text mt='sm'>Gasto Energetico Basal: {gastoEnergeticoBasal}</Text>
+                <Text>Gasto Energetico Total: {gastoEnergeticoTotal}</Text>
+            </form>
+        </Box>
+    </CuadroDietosintetico>
   )
 }
 
-export default energy
+export default energyTest

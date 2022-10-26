@@ -8,5 +8,4 @@ const CuadroDietosintetico = ({children}) => {
     </AppShellDemo>
   )
 }
-
 export default CuadroDietosintetico
